@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<title>Django | Users</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-1">
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <h1 class="text-center">Edit User</h1>
+                <form action="update" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="full_name">Full Name</label>
+                        <input type="text" name="full_name"class="form-control" value="{{user.full_name}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email"class="form-control" value="{{user.email}}">
+                    </div>
+                    <input type="submit" value="Update" class="btn btn-primary">
+                </form>
+                <a href="/" class="btn btn-primary">Users</a>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
